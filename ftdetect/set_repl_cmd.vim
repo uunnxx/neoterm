@@ -12,6 +12,10 @@ if has('nvim') || has('terminal')
     au FileType python
           \ if neoterm#repl#python#is_valid(g:neoterm_repl_python) == 1 |
           \   call neoterm#repl#set(g:neoterm_repl_python) |
+          \ elseif executable('ptipython') |
+          \   call neoterm#repl#set('ptipython') |
+          \ elseif executable('ptpython') |
+          \   call neoterm#repl#set('ptipython') |
           \ elseif executable('ipython') |
           \   call neoterm#repl#set('ipython --no-autoindent') |
           \ elseif executable('python') |
